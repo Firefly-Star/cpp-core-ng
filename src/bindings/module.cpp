@@ -15,7 +15,9 @@ PYBIND11_MODULE(starrail_cpp_core_ng, m) {
     m.doc() = "star-rail-sim-ng C++ core";
 
     py::class_<srs::InputEvent>(m, "InputEvent")
-        .def(py::init<>());
+        .def(py::init<>())
+        .def(py::init<std::string>(), py::arg("code"))
+        .def_readwrite("code", &srs::InputEvent::code);
 
     py::class_<srs::BattleSnapshot>(m, "BattleSnapshot")
         .def(py::init<>());
